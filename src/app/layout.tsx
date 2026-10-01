@@ -48,7 +48,7 @@ export default function RootLayout({
             }}
           />
           <Navbar />
-          <main className="flex-grow">{children}</main>
+          <main className="grow">{children}</main>
           <Footer />
         </WorkoutProvider>
       </body>

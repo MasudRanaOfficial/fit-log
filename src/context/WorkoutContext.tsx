@@ -30,7 +30,6 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
       if (storedPlan) setPlanList(JSON.parse(storedPlan));
       if (storedSaved) setSavedList(JSON.parse(storedSaved));
     } catch {
-      // Ignore localStorage errors
     } finally {
       setIsLoaded(true);
     }
