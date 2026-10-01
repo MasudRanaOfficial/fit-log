@@ -1,4 +1,4 @@
-# FitLog — Workout Library & Gym Companion
+# FitLog — Workout Library & Gym Companion[cite: 1]
 A dark, no-nonsense gym companion to pick lifts, build daily training plans, and track personal fitness progress.[cite: 1]
 
 ---
@@ -62,3 +62,109 @@ Major dependencies used in this project:
   "tailwindcss": "^3.x",
   "typescript": "^5.x"
 }
+
+```
+
+---
+
+## Installation & Setup
+
+1. Clone the repository and install dependencies:
+
+```bash
+git clone [https://github.com/your-username/fit-log.git](https://github.com/your-username/fit-log.git)
+cd fit-log
+npm install
+
+```
+
+2. Run the development server:
+
+```bash
+npm run dev
+
+```
+
+3. Open your browser and navigate to:
+
+```plaintext
+http://localhost:3000
+
+```
+
+---
+
+## Folder Structure
+
+```plaintext
+fit-log/
+├── public/
+│   ├── logo.png
+│   └── banner.png
+├── src/
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── page.tsx
+│   │   ├── my-plan/
+│   │   │   └── page.tsx
+│   │   └── workout/
+│   │       └── [id]/
+│   │           └── page.tsx
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Footer.tsx
+│   │   │   └── Navbar.tsx
+│   │   ├── details/
+│   │   │   ├── Instructions.tsx
+│   │   │   └── WorkoutSpecs.tsx
+│   │   ├── home/
+│   │   │   ├── HeroBanner.tsx
+│   │   │   ├── Library.tsx
+│   │   │   └── WorkoutCard.tsx
+│   │   ├── my-plan/
+│   │   │   ├── EmptyState.tsx
+│   │   │   ├── MetricsRow.tsx
+│   │   │   └── PlannedCard.tsx
+│   │   └── ui/
+│   │       ├── LoadingSpinner.tsx
+│   │       └── SortDropdown.tsx
+│   ├── context/
+│   │   └── WorkoutContext.tsx
+│   ├── types/
+│   │   └── workout.ts
+│   └── utils/
+│       └── api.ts
+├── package.json
+├── tailwind.config.ts
+└── tsconfig.json
+
+```
+
+---
+
+## Contributions (Optional)
+
+| Name | Role | Contributions |
+| --- | --- | --- |
+| Masud | Lead Developer | Architecture, Next.js routing, Context API, UI/UX implementation |
+
+---
+
+## How to Contribute (Optional)
+
+* Fork the project
+* Create your feature branch (`git checkout -b feature/AmazingFeature`)
+* Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+* Push to the branch (`git push origin feature/AmazingFeature`)
+* Open a Pull Request
+
+---
+
+## License (Optional)
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+**Live URL:** [FitLog Live Application](https://fit-log-by-masud.vercel.app/)
