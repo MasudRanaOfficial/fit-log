@@ -72,7 +72,7 @@ Major dependencies used in this project:
 1. Clone the repository and install dependencies:
 
 ```bash
-git clone [https://github.com/MasudRanaOfficial/fit-log](https://github.com/MasudRanaOfficial/fit-log)
+git clone https://github.com/MasudRanaOfficial/fit-log
 cd fit-log
 npm install
 
