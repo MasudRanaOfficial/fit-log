@@ -19,17 +19,9 @@ export interface PlannedWorkout extends Workout {
   addedAt?: string;
 }
 
-export interface SingleWorkoutResponse {
-  data?: Workout;
-  status?: string | number;
-  message?: string;
-}
+export type WorkoutsResponse = Workout[];
 
-export interface AllWorkoutsResponse {
-  data?: Workout[];
-  status?: string | number;
-  message?: string;
-}
+export type SingleWorkoutResponse = Workout;
 
 export type SortOption = "Duration" | "Calories" | "Rating";
 
