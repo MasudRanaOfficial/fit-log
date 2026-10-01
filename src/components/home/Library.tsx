@@ -1,17 +1,15 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { Workout, SortOption } from "@/types/workout";
+import { useEffect, useState } from "react";
+import { Workout } from "@/types/workout";
 import { getAllWorkouts } from "@/utils/api";
 import WorkoutCard from "./WorkoutCard";
-import SortDropdown from "@/components/ui/SortDropdown";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 
 export default function Library() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [currentSort, setCurrentSort] = useState<SortOption>("Duration");
 
   useEffect(() => {
     async function loadData() {
@@ -30,48 +28,20 @@ export default function Library() {
     loadData();
   }, []);
 
-  const sortedWorkouts = useMemo(() => {
-    const list = [...workouts];
-    if (currentSort === "Duration") {
-      return list.sort(
-        (a, b) => (Number(a.duration) || 0) - (Number(b.duration) || 0),
-      );
-    }
-    if (currentSort === "Calories") {
-      return list.sort(
-        (a, b) =>
-          (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0),
-      );
-    }
-    if (currentSort === "Rating") {
-      return list.sort(
-        (a, b) => (Number(b.rating) || 0) - (Number(a.rating) || 0),
-      );
-    }
-    return list;
-  }, [workouts, currentSort]);
-
   return (
     <section id="library" className="w-full py-16 sm:py-20 bg-[#0f1115]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#222732]">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white font-(family-name:--font-oswald)">
-              THE LIBRARY
-            </h2>
-            <p className="text-gray-400 text-sm sm:text-base mt-2">
-              Twelve lifts covering every major muscle group.
-            </p>
-          </div>
-
-          {!loading && !error && workouts.length > 0 && (
-            <SortDropdown
-              currentSort={currentSort}
-              onSortChange={setCurrentSort}
-            />
-          )}
+        {/* Header Section */}
+        <div className="pb-10 border-b border-[#222732]">
+          <h2 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white font-(family-name:--font-oswald)">
+            THE LIBRARY
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base mt-2">
+            Twelve lifts covering every major muscle group.
+          </p>
         </div>
 
+        {/* Content Area */}
         <div className="pt-10">
           {loading && <LoadingSpinner />}
 
@@ -89,7 +59,7 @@ export default function Library() {
 
           {!loading && !error && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {sortedWorkouts.map((workout) => (
+              {workouts.map((workout) => (
                 <WorkoutCard key={workout.id} workout={workout} />
               ))}
             </div>
