@@ -143,28 +143,12 @@ fit-log/
 
 ---
 
-## Contributions (Optional)
-
-| Name | Role | Contributions |
-| --- | --- | --- |
-| Masud | Lead Developer | Architecture, Next.js routing, Context API, UI/UX implementation |
-
----
-
-## How to Contribute (Optional)
+## How to Contribute
 
 * Fork the project
 * Create your feature branch (`git checkout -b feature/AmazingFeature`)
 * Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 * Push to the branch (`git push origin feature/AmazingFeature`)
 * Open a Pull Request
-
----
-
-## License (Optional)
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
 
 **Live URL:** [FitLog Live Application](https://fit-log-by-masud.vercel.app/)
