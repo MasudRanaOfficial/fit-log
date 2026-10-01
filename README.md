@@ -1,4 +1,4 @@
-# FitLog — Workout Library & Gym Companion[cite: 1]
+# FitLog — Workout Library & Gym Companion
 A dark, no-nonsense gym companion to pick lifts, build daily training plans, and track personal fitness progress.[cite: 1]
 
 ---
