@@ -9,10 +9,14 @@ export default function MetricsRow({
   minutes,
   calories,
 }: MetricsRowProps) {
+  const safeExercises = Number.isFinite(exercises) ? exercises : 0;
+  const safeMinutes = Number.isFinite(minutes) ? minutes : 0;
+  const safeCalories = Number.isFinite(calories) ? calories : 0;
+
   const metrics = [
-    { label: "EXERCISES", value: exercises, unit: "lifts" },
-    { label: "MINUTES", value: minutes, unit: "min" },
-    { label: "CALORIES", value: calories, unit: "kcal" },
+    { label: "EXERCISES", value: safeExercises, unit: "lifts" },
+    { label: "MINUTES", value: safeMinutes, unit: "min" },
+    { label: "CALORIES", value: safeCalories, unit: "kcal" },
   ];
 
   return (
@@ -27,7 +31,7 @@ export default function MetricsRow({
           </span>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl sm:text-4xl font-extrabold text-white font-(family-name:--font-oswald)">
-              {item.value}
+              {String(item.value)}
             </span>
             <span className="text-xs font-medium text-gray-500">
               {item.unit}

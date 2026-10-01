@@ -13,12 +13,11 @@ export default function MyPlanPage() {
   const { planList, savedList, removeFromPlan, removeFromSaved, markAsDone } =
     useWorkout();
 
-  // Calculate live metrics for Today's Plan
   const metrics = planList.reduce(
     (acc, curr) => ({
       exercises: acc.exercises + 1,
-      minutes: acc.minutes + curr.duration,
-      calories: acc.calories + curr.calories,
+      minutes: acc.minutes + (Number(curr.duration) || 0),
+      calories: acc.calories + (Number(curr.caloriesBurned) || 0),
     }),
     { exercises: 0, minutes: 0, calories: 0 },
   );
@@ -48,7 +47,6 @@ export default function MyPlanPage() {
   return (
     <div className="w-full py-10 md:py-16 bg-[#0f1115]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white font-(family-name:--font-oswald)">
             MY PLAN
@@ -58,14 +56,12 @@ export default function MyPlanPage() {
           </p>
         </div>
 
-        {/* Metrics Summary Row (Live calculation) */}
         <MetricsRow
           exercises={metrics.exercises}
           minutes={metrics.minutes}
           calories={metrics.calories}
         />
 
-        {/* Tabs Bar */}
         <div className="flex border-b border-[#222732] mb-8">
           <button
             onClick={() => setActiveTab("plan")}
@@ -96,7 +92,6 @@ export default function MyPlanPage() {
           </button>
         </div>
 
-        {/* Content List / Empty State */}
         {currentList.length === 0 ? (
           <EmptyState />
         ) : (

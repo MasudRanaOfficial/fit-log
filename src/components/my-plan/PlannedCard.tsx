@@ -15,8 +15,16 @@ export default function PlannedCard({
   onRemove,
   onMarkDone,
 }: PlannedCardProps) {
-  const { id, name, equipment, duration, calories, rating, image, isDone } =
-    workout;
+  const {
+    id,
+    name,
+    equipment,
+    duration,
+    caloriesBurned,
+    rating,
+    image,
+    isDone,
+  } = workout;
 
   return (
     <div
@@ -26,7 +34,6 @@ export default function PlannedCard({
           : "bg-[#161920] border-[#262b36] hover:border-gray-700"
       }`}
     >
-      {/* Thumbnail + Details */}
       <div className="flex items-center gap-4 w-full sm:w-auto">
         <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden bg-[#222731] shrink-0">
           <Image
@@ -51,18 +58,16 @@ export default function PlannedCard({
             <span className="text-gray-500">Equipment:</span> {equipment}
           </p>
 
-          {/* Stats Row */}
           <div className="flex items-center gap-4 mt-2 text-xs text-gray-400">
             <span>{duration} min</span>
             <span>•</span>
-            <span>{calories} kcal</span>
+            <span>{caloriesBurned} kcal</span>
             <span>•</span>
             <span className="text-yellow-400 font-semibold">★ {rating}</span>
           </div>
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end pt-3 sm:pt-0 border-t sm:border-t-0 border-[#222732]">
         <Link
           href={`/workout/${id}`}

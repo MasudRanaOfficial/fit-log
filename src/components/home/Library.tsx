@@ -33,13 +33,20 @@ export default function Library() {
   const sortedWorkouts = useMemo(() => {
     const list = [...workouts];
     if (currentSort === "Duration") {
-      return list.sort((a, b) => a.duration - b.duration);
+      return list.sort(
+        (a, b) => (Number(a.duration) || 0) - (Number(b.duration) || 0),
+      );
     }
     if (currentSort === "Calories") {
-      return list.sort((a, b) => b.calories - a.calories);
+      return list.sort(
+        (a, b) =>
+          (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0),
+      );
     }
     if (currentSort === "Rating") {
-      return list.sort((a, b) => b.rating - a.rating);
+      return list.sort(
+        (a, b) => (Number(b.rating) || 0) - (Number(a.rating) || 0),
+      );
     }
     return list;
   }, [workouts, currentSort]);
@@ -47,7 +54,6 @@ export default function Library() {
   return (
     <section id="library" className="w-full py-16 sm:py-20 bg-[#0f1115]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header & Sort Row */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#222732]">
           <div>
             <h2 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white font-(family-name:--font-oswald)">
@@ -66,7 +72,6 @@ export default function Library() {
           )}
         </div>
 
-        {/* Content Area */}
         <div className="pt-10">
           {loading && <LoadingSpinner />}
 

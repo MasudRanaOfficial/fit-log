@@ -142,14 +142,14 @@ export default function WorkoutDetailPage({
 
           {/* Right Column: Info & Action Sections */}
           <div className="lg:col-span-7 flex flex-col justify-start">
-            {/* Category Tags */}
+            {/* Category / MuscleGroups Tags */}
             <div className="flex flex-wrap gap-2 mb-3">
-              {workout.category?.map((cat, idx) => (
+              {workout.muscleGroups?.map((group, idx) => (
                 <span
                   key={idx}
                   className="text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-[#242a36] text-gray-300"
                 >
-                  {cat}
+                  {group}
                 </span>
               ))}
             </div>

@@ -11,7 +11,7 @@ export default function WorkoutSpecs({ workout }: WorkoutSpecsProps) {
     { label: "SETS", value: workout.sets },
     { label: "REPS", value: workout.reps },
     { label: "DURATION", value: `${workout.duration} min` },
-    { label: "CALORIES", value: `${workout.calories} kcal` },
+    { label: "CALORIES", value: `${workout.caloriesBurned} kcal` },
     { label: "RATING", value: workout.rating },
   ];
 
