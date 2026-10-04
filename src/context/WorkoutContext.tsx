@@ -18,6 +18,24 @@ interface WorkoutContextType {
 
 const WorkoutContext = createContext<WorkoutContextType | undefined>(undefined);
 
+const readStoredList = <T,>(key: string): T[] => {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(key);
+    if (!storedValue) {
+      return [];
+    }
+
+    const parsedValue = JSON.parse(storedValue);
+    return Array.isArray(parsedValue) ? parsedValue : [];
+  } catch {
+    return [];
+  }
+};
+
 export function WorkoutProvider({ children }: { children: React.ReactNode }) {
   const [planList, setPlanList] = useState<PlannedWorkout[]>([]);
   const [savedList, setSavedList] = useState<Workout[]>([]);
@@ -25,25 +43,22 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
-      const storedPlan = localStorage.getItem("fitlog_plan");
-      const storedSaved = localStorage.getItem("fitlog_saved");
-      if (storedPlan) setPlanList(JSON.parse(storedPlan));
-      if (storedSaved) setSavedList(JSON.parse(storedSaved));
-    } catch {
+      setPlanList(readStoredList<PlannedWorkout>("fitlog_plan"));
+      setSavedList(readStoredList<Workout>("fitlog_saved"));
     } finally {
       setIsLoaded(true);
     }
   }, []);
 
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem("fitlog_plan", JSON.stringify(planList));
+    if (isLoaded && typeof window !== "undefined") {
+      window.localStorage.setItem("fitlog_plan", JSON.stringify(planList));
     }
   }, [planList, isLoaded]);
 
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem("fitlog_saved", JSON.stringify(savedList));
+    if (isLoaded && typeof window !== "undefined") {
+      window.localStorage.setItem("fitlog_saved", JSON.stringify(savedList));
     }
   }, [savedList, isLoaded]);
 
